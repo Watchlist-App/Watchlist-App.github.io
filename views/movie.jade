@@ -1,0 +1,31 @@
+.thumbnail
+  img(src="{{poster}}")
+  .caption
+    h3 {{movie.title}}
+    p {{movie.overview}}
+    h4 genres:
+    ul
+      li(ng-repeat="genre in movie.genres")
+        a(ng-href="#/genre/{{genre.id}}") {{genre.name}}
+    h4 production companies:
+    ul
+      li(ng-repeat="company in movie.production_companies")
+        a(ng-href="#/company/{{company.id}}") {{company.name}}
+    p
+      a.btn.btn-primary(href="#/dvds/{{movie.title}}", role="button") Order dvd
+      a.btn.btn-primary(href="#/ebay/{{movie.title}}", role="button") Ebay offers
+      a.btn.btn-primary(href="#/itunes/{{movie.title}}", role="button") Buy on itunes
+      a.btn.btn-primary(href="http://www.imdb.com/title/{{movie.imdb_id}}", role="button") IMDB
+      a.btn.btn-primary(href="http://www.themoviedb.org/movie/{{movie.id}}", role="button") The Movie DB
+      button.btn.btn-primary(ng-click="addToWatchlist()") Add to watchlist
+  iframe(width="560", height="315", ng-src="{{trailerURL}}", frameborder="0", allowfullscreen)
+  h4 cast:
+
+  .row
+    div(masonry)
+      .masonry-brick.thumbnail(ng-repeat="actor in movie.credits.cast")
+        a(ng-href="#/actor/{{actor.id}}")
+          img(ng-src="{{actorPhoto(actor.profile_path)}}")
+        .caption
+          h5 {{actor.character}}
+          h5 {{actor.name}}

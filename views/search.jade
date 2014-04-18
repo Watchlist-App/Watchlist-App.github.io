@@ -1,0 +1,7 @@
+h1 Search
+
+input.form-control(type="text", ng-model="searchPhrase", ng-change="search()")
+
+div(masonry)
+  .masonry-brick(ng-repeat="movie in results")
+    movie

@@ -1,0 +1,4 @@
+h1 Popular Movies
+div(infinite-scroll="loadMore()", masonry="{ transitionDuration: '1s' }")
+  .masonry-brick(ng-repeat="movie in movies | filter : { title : search }")
+    movie
